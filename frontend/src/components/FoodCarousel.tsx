@@ -91,9 +91,14 @@ export const FoodCarousel: React.FC<FoodCarouselProps> = ({
                   <div className="relative h-48 w-full overflow-hidden">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src={food.image}
+                      src={(food as any).image_url || food.image}
                       alt={food.dish_name}
                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      onError={(e) => {
+                        if (food.image && (e.target as HTMLImageElement).src !== food.image) {
+                          (e.target as HTMLImageElement).src = food.image;
+                        }
+                      }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
                     

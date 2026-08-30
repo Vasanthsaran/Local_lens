@@ -189,10 +189,12 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                           }}>
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
-                              src={place.image_url || place.image}
+                              src={place.image_url || place.image || "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80"}
                               alt={place.title || place.name}
                               className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                              onError={(e) => { (e.target as HTMLImageElement).src = place.image; }}
+                              onError={(e) => {
+                                (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80";
+                              }}
                             />
                             <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                               <span className="text-white text-xs font-bold flex items-center space-x-1">
@@ -407,14 +409,16 @@ export const MultiModalAssistantModal: React.FC<AssistantModalProps> = ({
                             <div className="flex flex-col items-end space-y-2 flex-shrink-0 w-full sm:w-auto">
                                 {/* eslint-disable-next-line @next/next/no-img-element */}
                                 <img
-                                  src={place.image_url || place.image}
+                                  src={place.image_url || place.image || "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80"}
                                   alt={place.name}
                                   className="w-full sm:w-28 h-20 rounded-xl object-cover cursor-pointer hover:opacity-80 transition-opacity"
                                   onClick={() => {
                                       const event = new CustomEvent('openPlaceModal', { detail: { ...place, title: place.name } });
                                       window.dispatchEvent(event);
                                   }}
-                                  onError={(e) => { (e.target as HTMLImageElement).src = place.image; }}
+                                  onError={(e) => {
+                                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=800&q=80";
+                                  }}
                                 />
                             </div>
                           </div>

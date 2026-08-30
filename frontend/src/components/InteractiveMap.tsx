@@ -108,13 +108,18 @@ export const InteractiveMap: React.FC<InteractiveMapProps> = ({ places, selected
               </div>
               <h3 className="font-serif text-xl font-bold text-[#1C1310]">{activePlace.title}</h3>
               <p className="text-xs text-gray-600 mt-2 leading-relaxed">{activePlace.description}</p>
-              {activePlace.image_url && (
+              {(activePlace.image || activePlace.image_url) && (
                 <div className="mt-3 relative w-full h-32 rounded-lg overflow-hidden border border-gray-200">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
-                    src={activePlace.image_url} 
+                    src={activePlace.image_url || activePlace.image} 
                     alt={activePlace.title} 
                     className="absolute inset-0 w-full h-full object-cover"
+                    onError={(e) => {
+                      if (activePlace.image && (e.target as HTMLImageElement).src !== activePlace.image) {
+                        (e.target as HTMLImageElement).src = activePlace.image;
+                      }
+                    }}
                   />
                 </div>
               )}

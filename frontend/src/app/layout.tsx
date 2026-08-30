@@ -17,6 +17,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "LocalLens - Discover a place like a local",
   description: "Authentic local recommendations, Trust Score verified dishes, and AI trip planning across India.",
+  icons: {
+    icon: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsxH96K6EZxGSCyWiKU1OhJKwcydNVtpgKXE0C94HWBQ&s=10",
+    shortcut: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsxH96K6EZxGSCyWiKU1OhJKwcydNVtpgKXE0C94HWBQ&s=10",
+    apple: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsxH96K6EZxGSCyWiKU1OhJKwcydNVtpgKXE0C94HWBQ&s=10",
+  },
 };
 
 export default function RootLayout({
